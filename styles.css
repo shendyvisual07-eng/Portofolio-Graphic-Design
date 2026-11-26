@@ -84,11 +84,64 @@ html {
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(4, 102, 200, 0.09) 0, transparent 28%),
+    radial-gradient(circle at 92% 24%, rgba(51, 65, 92, 0.1) 0, transparent 26%),
+    radial-gradient(circle at 50% 100%, rgba(3, 83, 164, 0.07) 0, transparent 34%),
+    linear-gradient(rgba(4, 102, 200, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(4, 102, 200, 0.035) 1px, transparent 1px);
+  background-size: auto, auto, auto, 52px 52px, 52px 52px;
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.28;
+  background: radial-gradient(ellipse at center, transparent 42%, rgba(0, 18, 51, 0.08) 100%);
+}
+
+/* Soft gradient bubbles: decorative, static, low-cost */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.52;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(4, 102, 200, 0.13) 0 6%, transparent 22%),
+    radial-gradient(circle at 86% 34%, rgba(51, 65, 92, 0.12) 0 7%, transparent 24%),
+    radial-gradient(circle at 72% 86%, rgba(3, 83, 164, 0.1) 0 5%, transparent 20%);
+}
+
+body.light-theme::after {
+  opacity: 0.62;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(4, 102, 200, 0.09) 0 6%, transparent 22%),
+    radial-gradient(circle at 86% 34%, rgba(151, 157, 172, 0.1) 0 7%, transparent 24%),
+    radial-gradient(circle at 72% 86%, rgba(3, 83, 164, 0.07) 0 5%, transparent 20%);
+}
+
+body.light-theme {
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(4, 102, 200, 0.08) 0, transparent 28%),
+    radial-gradient(circle at 92% 24%, rgba(151, 157, 172, 0.12) 0, transparent 26%),
+    radial-gradient(circle at 50% 100%, rgba(3, 83, 164, 0.05) 0, transparent 34%),
+    linear-gradient(rgba(4, 102, 200, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(4, 102, 200, 0.028) 1px, transparent 1px);
+}
+
+body.light-theme::before {
+  opacity: 0.16;
+  background: radial-gradient(ellipse at center, transparent 48%, rgba(0, 40, 85, 0.06) 100%);
 }
 
 /* Custom Interactive Topographic Canvas Background */
@@ -102,8 +155,8 @@ body {
   z-index: 0;
   opacity: 0.35;
   transition: opacity 0.5s ease;
-  will-change: transform;
   contain: strict;
+  will-change: transform;
 }
 
 body.light-theme .topo-bg {
@@ -244,14 +297,24 @@ body.hovering .cursor-follower {
 /* Site Header */
 .site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 14px;
+  left: 50%;
+  width: min(96%, 1380px);
   z-index: 90;
-  background: rgba(0, 18, 51, 0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0, 24, 69, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   transition: all var(--transition-smooth);
+}
+
+body:not(.light-theme) .site-header {
+  background: rgba(0, 18, 51, 0.64);
+  border-color: rgba(151, 157, 172, 0.2);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .header-inner {
@@ -410,6 +473,68 @@ body.hovering .cursor-follower {
   height: 2px;
   background: var(--text-main);
   transition: all var(--transition-fast);
+}
+
+/* Lightweight animated line-wave background */
+.hero-section {
+  isolation: isolate;
+}
+
+.hero-wave-bg {
+  display: none;
+}
+
+.wave {
+  position: absolute;
+  left: -5%;
+  width: 110%;
+  height: 34%;
+  border: 1px solid rgba(4, 102, 200, 0.22);
+  border-color: rgba(4, 102, 200, 0.22) transparent transparent;
+  border-radius: 50%;
+  transform: translate3d(0, 0, 0) rotate(-4deg);
+  will-change: transform;
+  animation: lineWaveFloat 16s ease-in-out infinite alternate;
+}
+
+.wave-one {
+  top: 12%;
+}
+
+.wave-two {
+  top: 22%;
+  opacity: 0.72;
+  transform: translate3d(0, 0, 0) rotate(4deg) scale(1.08);
+  animation-name: lineWaveFloatAlt;
+  animation-duration: 21s;
+  animation-delay: -6s;
+}
+
+.wave-three { top: 32%; opacity: 0.58; animation-delay: -3s; }
+.wave-four { top: 42%; opacity: 0.48; transform: rotate(3deg) scale(1.05); animation-name: lineWaveFloatAlt; animation-delay: -9s; }
+.wave-five { top: 52%; opacity: 0.38; animation-delay: -7s; }
+.wave-six { top: 62%; opacity: 0.3; transform: rotate(5deg) scale(1.1); animation-name: lineWaveFloatAlt; animation-delay: -12s; }
+.wave-seven { top: 72%; opacity: 0.24; animation-delay: -10s; }
+.wave-eight { top: 82%; opacity: 0.18; transform: rotate(2deg) scale(1.12); animation-name: lineWaveFloatAlt; animation-delay: -15s; }
+
+@keyframes lineWaveFloat {
+  from { transform: translate3d(-2%, 8px, 0) rotate(-4deg); }
+  to { transform: translate3d(2%, -8px, 0) rotate(-2deg); }
+}
+
+@keyframes lineWaveFloatAlt {
+  from { transform: translate3d(2%, -6px, 0) rotate(4deg) scale(1.08); }
+  to { transform: translate3d(-2%, 8px, 0) rotate(2deg) scale(1.08); }
+}
+
+body.light-theme .hero-wave-bg {
+  opacity: 0.42;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave {
+    animation: none;
+  }
 }
 
 /* Hero Section */
@@ -700,6 +825,19 @@ body:not(.light-theme) .glow-text {
   position: relative;
 }
 
+.section::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  right: -180px;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgba(4, 102, 200, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .section-header {
   text-align: center;
   max-width: 760px;
@@ -742,14 +880,17 @@ body:not(.light-theme) .glow-text {
 }
 
 .filter-btn {
-  background: rgba(0, 40, 85, 0.45);
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.62);
   color: var(--text-muted);
   padding: 10px 20px;
   border-radius: 30px;
   font-weight: 600;
   font-size: 0.85rem;
   cursor: pointer;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 5px 18px rgba(0, 24, 69, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   transition: all var(--transition-fast);
 }
 
@@ -759,11 +900,22 @@ body:not(.light-theme) .glow-text {
 }
 
 .filter-btn.active {
-  background: var(--smart-blue);
+  background: rgba(4, 102, 200, 0.72);
   color: #ffffff;
-  border-color: var(--smart-blue);
+  border-color: rgba(255, 255, 255, 0.65);
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(4, 102, 200, 0.35);
+  box-shadow: 0 6px 20px rgba(4, 102, 200, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+body:not(.light-theme) .filter-btn {
+  background: rgba(0, 24, 69, 0.42);
+  border-color: rgba(151, 157, 172, 0.3);
+  color: var(--lavender-grey);
+}
+
+body:not(.light-theme) .filter-btn.active {
+  background: rgba(4, 102, 200, 0.72);
+  color: #ffffff;
 }
 
 /* Projects Grid */
@@ -806,6 +958,44 @@ body:not(.light-theme) .glow-text {
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.card-media-wrapper img[src$=".svg"] {
+  object-fit: contain;
+  padding: 18px;
+  background: #f8fafd;
+}
+
+.uiux-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background: #f8fafd;
+}
+
+.uiux-preview-grid img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  object-fit: contain;
+  padding: 4px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 40, 85, 0.08);
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .uiux-preview-grid {
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .uiux-preview-grid img {
+    padding: 2px;
+  }
+}'} žen񹟂?} 诺果-vesm 天天中彩票不?акәos
 
 .project-card:hover .card-media-wrapper img {
   transform: scale(1.06);
@@ -1916,6 +2106,46 @@ body:not(.light-theme) .glow-text {
   line-height: 1.6;
 }
 
+.availability-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 12px 16px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.availability-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.availability-item strong,
+.availability-item i {
+  color: var(--smart-blue);
+}
+
+.availability-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+.availability-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border-subtle);
+}
+
 .contact-methods {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2135,10 +2365,16 @@ body:not(.light-theme) .glow-text {
     max-width: 1320px;
   }
 
+  .site-header {
+    top: 8px;
+    width: calc(100% - 16px);
+    border-radius: 14px;
+  }
+
   .header-inner {
     width: 100%;
-    padding: 12px 16px;
-    gap: 10px;
+    padding: 10px 12px;
+    gap: 8px;
   }
 
   .brand-text .name {
@@ -2346,6 +2582,23 @@ body:not(.light-theme) .glow-text {
     padding: 28px 16px;
   }
 
+  .availability-strip {
+    border-radius: var(--radius-md);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .availability-item {
+    justify-content: center;
+  }
+
+  .availability-divider {
+    width: 100%;
+    height: 1px;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -2513,8 +2766,8 @@ body:not(.light-theme) .glow-text {
 
 /* Light Theme Specific Enhancements */
 body.light-theme .site-header {
-  background: rgba(255, 255, 255, 0.88);
-  border-bottom: 1px solid rgba(0, 40, 85, 0.06);
+  background: rgba(255, 255, 255, 0.62);
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 body.light-theme .btn-pdf-download,
@@ -2608,9 +2861,11 @@ body.light-theme .footer-right a:hover {
 }
 
 body.light-theme .filter-btn {
-  background: #ffffff;
-  border: 1px solid rgba(0, 40, 85, 0.08);
-  box-shadow: 0 2px 8px rgba(0, 24, 69, 0.03);
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 5px 18px rgba(0, 24, 69, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
 
 body.light-theme .filter-btn.active {

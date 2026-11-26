@@ -69,12 +69,8 @@
   window.addEventListener('resize', resizeCanvas, { passive: true });
   resizeCanvas();
 
-  window.addEventListener('mousemove', (e) => {
-    mouse.targetX = e.clientX / window.innerWidth;
-    mouse.targetY = e.clientY / window.innerHeight;
-  }, { passive: true });
-
-  // 30 FPS throttle cuts GPU & battery consumption by ~65% while remaining visually smooth
+  // Decorative-only animated contour background; no mouse tracking or interaction.
+  // 30 FPS throttle cuts GPU & battery consumption while retaining the original line-wave feel.
   let time = 0;
   let lastDrawTime = 0;
   const targetFrameInterval = 1000 / 30; // 30 FPS
@@ -98,11 +94,11 @@
     ctx.strokeStyle = isLight ? 'rgba(0, 40, 85, 0.07)' : 'rgba(151, 157, 172, 0.12)';
     ctx.lineWidth = 1;
 
-    const ringCount = 12; // Optimized from 26 down to 12
-    const centerX = width * (0.3 + mouse.x * 0.4);
-    const centerY = height * (0.3 + mouse.y * 0.4);
-    const maxRadius = Math.max(width, height) * 0.85;
-    const points = 36; // Optimized from 72 down to 36
+    const ringCount = 20;
+    const centerX = width * 0.5;
+    const centerY = height * 0.48;
+    const maxRadius = Math.max(width, height) * 0.82;
+    const points = 48;
 
     for (let i = 1; i <= ringCount; i++) {
       ctx.beginPath();
@@ -411,6 +407,66 @@
       ]
     },
     {
+      id: 'uiux-finance-flow',
+      title: 'Finance App — Banking UI/UX Flow',
+      client: 'UI/UX Product Design',
+      category: 'uiux',
+      year: '2026',
+      featured: true,
+      thumbnail: 'assets/projects/Login.svg',
+      palette: ['#0466C8', '#023E7D', '#F8FAFC'],
+      shortDesc: 'End-to-end mobile banking interface covering authentication, dashboard analytics, transfers, and account activity.',
+      fullDesc: 'A focused mobile finance product system designed around clear hierarchy, low-friction authentication, and confidence-driven transaction flows. The interface set covers sign up, login, dashboard, statistics, card switching, transfer, and confirmation states.',
+      impact: {
+        highlight: 'Clearer Banking Flow Across 7 Product Screens',
+        challenge: 'Making complex financial actions feel simple, trustworthy, and easy to scan on mobile devices.',
+        strategy: 'Used a modular component system, strong information hierarchy, progressive disclosure, and consistent action patterns across the core journey.',
+        metrics: [
+          { label: 'Core Screens', value: '7 UI Flows' },
+          { label: 'Primary Platform', value: 'Mobile App' },
+          { label: 'Design System', value: 'Modular UI' }
+        ]
+      },
+      deliverables: ['Login & Sign Up Flow', 'Finance Dashboard', 'Statistics & Insights', 'Card Switcher', 'Transfer Flow'],
+      tools: ['UI/UX Design', 'Interaction Design', 'Responsive Prototyping'],
+      pdfPages: [],
+      gallery: [
+        'assets/projects/dashboard.svg',
+        'assets/projects/Login.svg',
+        'assets/projects/Login form.svg',
+        'assets/projects/Sign up form.svg',
+        'assets/projects/Statistics.svg',
+        'assets/projects/Switch card.svg',
+        'assets/projects/Transfer Screen.svg'
+      ]
+    },
+    {
+      id: 'travel-landing-page',
+      title: 'Travel App — Landing Page Experience',
+      client: 'Travel Product Interface',
+      category: 'webdesign',
+      year: '2026',
+      featured: true,
+      thumbnail: 'assets/projects/Landing Page Travel APP.svg',
+      palette: ['#0466C8', '#023E7D', '#F8FAFC'],
+      shortDesc: 'A responsive travel landing page designed to inspire discovery, simplify trip planning, and drive exploration.',
+      fullDesc: 'A modern travel landing page concept focused on visual storytelling, destination discovery, and clear conversion paths. The interface balances immersive destination imagery with structured navigation, readable content hierarchy, and responsive web behavior.',
+      impact: {
+        highlight: 'Conversion-Focused Travel Web Experience',
+        challenge: 'Presenting travel destinations in an inspiring but structured interface without overwhelming first-time visitors.',
+        strategy: 'Combined strong destination imagery, clear content hierarchy, modular sections, and focused calls to action for a smooth discovery journey.',
+        metrics: [
+          { label: 'Platform', value: 'Responsive Web' },
+          { label: 'Primary Goal', value: 'Trip Discovery' },
+          { label: 'Design System', value: 'Modular UI' }
+        ]
+      },
+      deliverables: ['Travel Landing Page', 'Destination Discovery UI', 'Responsive Web Layout', 'Call-to-Action System'],
+      tools: ['UI/UX Design', 'Web Design', 'Responsive Prototyping'],
+      pdfPages: [],
+      gallery: ['assets/projects/Landing Page Travel APP.svg']
+    },
+    {
       id: 'concept-tokyo-sound',
       title: 'TOKYO SOUND SYSTEM — Neo-Brutalist Kinetic Posters',
       client: 'TSS Collective (Concept Lab)',
@@ -466,7 +522,13 @@
             ${p.featured ? '<span class="card-tag tag-featured">✦ Featured</span>' : ''}
             <span class="card-tag">${getCategoryLabel(p.category)}</span>
           </div>
-          <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
+          ${p.category === 'uiux' ? `
+            <div class="uiux-preview-grid">
+              <img src="assets/projects/Login.svg" alt="Login screen" loading="lazy">
+              <img src="assets/projects/Login form.svg" alt="Login form screen" loading="lazy">
+              <img src="assets/projects/dashboard.svg" alt="Dashboard screen" loading="lazy">
+            </div>
+          ` : `<img src="${p.thumbnail}" alt="${p.title}" loading="lazy">`}
           <div class="card-overlay-hover">
             <span class="view-case-pill">View Case Study <i class="fa-solid fa-arrow-right"></i></span>
           </div>
@@ -528,6 +590,8 @@
       case 'ecommerce': return 'Fashion & E-Com';
       case 'entertainment': return 'Film & Entertainment';
       case 'editorial': return 'Corporate & OOH';
+      case 'uiux': return 'UI/UX Design';
+      case 'webdesign': return 'Web Design';
       case 'concept': return 'Concept Lab';
       default: return 'Design';
     }
