@@ -91,7 +91,7 @@
     ctx.clearRect(0, 0, width, height);
 
     const isLight = document.body.classList.contains('light-theme');
-    ctx.strokeStyle = isLight ? 'rgba(0, 40, 85, 0.07)' : 'rgba(151, 157, 172, 0.12)';
+    ctx.strokeStyle = isLight ? 'rgba(99, 102, 241, 0.08)' : 'rgba(129, 140, 248, 0.16)';
     ctx.lineWidth = 1;
 
     const ringCount = 20;
@@ -840,15 +840,15 @@
   // --- INTERACTIVE DESIGN LAB: PALETTE INSPECTOR ---
   const palettes = {
     brand: [
-      { hex: '#0466C8', name: 'Smart Blue' },
-      { hex: '#0353A4', name: 'Sapphire' },
-      { hex: '#023E7D', name: 'Regal Navy' },
-      { hex: '#002855', name: 'Prussian Blue' },
-      { hex: '#001233', name: 'Deep Navy' },
-      { hex: '#33415C', name: 'Twilight Indigo' },
-      { hex: '#5C677D', name: 'Blue Slate' },
-      { hex: '#7D8597', name: 'Slate Grey' },
-      { hex: '#979DAC', name: 'Lavender Grey' }
+      { hex: '#6366F1', name: 'Electric Indigo (Primary)' },
+      { hex: '#4F46E5', name: 'Hyper Violet (Core)' },
+      { hex: '#8B5CF6', name: 'Iris Gradient' },
+      { hex: '#06B6D4', name: 'Fluorescent Cyan' },
+      { hex: '#FF5C00', name: 'Tangerine Spark' },
+      { hex: '#10B981', name: 'Live Emerald' },
+      { hex: '#0F172A', name: 'Slate Noir' },
+      { hex: '#64748B', name: 'Neutral Steel' },
+      { hex: '#F8FAFC', name: 'Studio Frost' }
     ],
     brilliant: [
       { hex: '#FFFFFF', name: 'Pure White (Base)' },
@@ -1013,6 +1013,34 @@
     playSuccessSound();
     openPdfViewer(1);
   });
+
+  // Mobile Navigation Drawer Toggle (Modern a11y & responsive guidance)
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+      playClickSound();
+      const isActive = navLinks.classList.toggle('active');
+      mobileMenuBtn.classList.toggle('active', isActive);
+      mobileMenuBtn.setAttribute('aria-expanded', String(isActive));
+    });
+
+    navLinks.querySelectorAll('.nav-item').forEach((item) => {
+      item.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   // Inquiry Form Submission Handler
   window.submitInquiry = function () {

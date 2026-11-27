@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Shendy Rizky Putra — Senior Graphic Designer & Art Director</title>
   <meta name="description" content="Official interactive design portfolio of Shendy Rizky Putra. Specializing in Brand Identity, Theatrical Campaigns, Fashion & E-Commerce Art Direction, and Packaging.">
+  <meta name="author" content="Shendy Rizky Putra">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shendyvisual07-eng.github.io/Portofolio-Graphic-Design/">
+  <meta property="og:title" content="Shendy Rizky Putra — Senior Graphic Designer & Art Director">
+  <meta property="og:description" content="Official interactive design portfolio of Shendy Rizky Putra. Specializing in Brand Identity, Theatrical Campaigns, Fashion & E-Commerce Art Direction, and Packaging.">
+  <meta property="og:image" content="assets/projects/brilliant_hero.jpg">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shendy Rizky Putra — Senior Graphic Designer & Art Director">
+  <meta name="twitter:description" content="Official interactive design portfolio of Shendy Rizky Putra. Specializing in Brand Identity, Theatrical Campaigns, Fashion & E-Commerce Art Direction, and Packaging.">
+  <meta name="twitter:image" content="assets/projects/brilliant_hero.jpg">
+
+  <!-- Theme Color (Light & Dark) -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#09090e" media="(prefers-color-scheme: dark)">
+
+  <!-- Modern SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%236366f1'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='42' fill='%23ffffff'%3ESRP%3C/text%3E%3C/svg%3E">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +37,11 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=neo-v3">
 </head>
 <body class="light-theme">
+  <!-- Skip Link for Keyboard Accessibility -->
+  <a href="#hero" class="skip-link">Skip to main content</a>
   <!-- Custom Interactive Cursor -->
   <div class="custom-cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
@@ -26,16 +51,16 @@
 
   <!-- Sound Toggle & Quick Controls -->
   <div class="floating-controls">
-    <button id="soundToggle" class="ctrl-btn" title="Toggle Sound Feedback">
-      <i class="fa-solid fa-volume-high"></i>
+    <button id="soundToggle" class="ctrl-btn" title="Toggle Sound Feedback" aria-label="Toggle Sound Feedback">
+      <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
       <span class="ctrl-tooltip">Audio FX</span>
     </button>
-    <button id="themeToggle" class="ctrl-btn" title="Toggle Dark/Light Mode">
-      <i class="fa-solid fa-moon"></i>
+    <button id="themeToggle" class="ctrl-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+      <i class="fa-solid fa-moon" aria-hidden="true"></i>
       <span class="ctrl-tooltip">Theme</span>
     </button>
-    <a href="#contact" class="ctrl-btn hire-btn" title="Get in Touch / Hire">
-      <i class="fa-solid fa-paper-plane"></i>
+    <a href="#contact" class="ctrl-btn hire-btn" title="Get in Touch / Hire" aria-label="Get in Touch / Hire">
+      <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
       <span class="ctrl-text">Hire Me</span>
     </a>
   </div>
@@ -51,7 +76,7 @@
         </div>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="#showcase" class="nav-item">Selected Works</a>
         <a href="#about" class="nav-item">About</a>
         <a href="#lab" class="nav-item">Design Lab</a>
@@ -67,7 +92,7 @@
           <i class="fa-solid fa-download"></i>
           <span>Download PDF</span>
         </a>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -88,49 +113,71 @@
     </div>
     <div class="container hero-container">
       <div class="hero-badge">
-        <img src="assets/shendy_profile.jpg" alt="Shendy" class="hero-avatar-mini" onerror="this.style.display='none'">
+        <img src="assets/shendy_profile.jpg" alt="Shendy Rizky Putra" class="hero-avatar-mini" onerror="this.style.display='none'">
         <span class="pulse-dot"></span>
-        <span>OPEN FOR COMMISSIONS &amp; FULL-TIME ROLES</span>
+        <span>AVAILABLE FOR LEAD ART DIRECTION &amp; SENIOR ROLES — 2026</span>
       </div>
 
       <h1 class="hero-title">
-        Crafting <span class="highlight-serif">Visual Identities</span> &amp; High-Impact <span class="glow-text">Campaign Art Direction.</span>
+        Directing <span class="highlight-serif">Visual Systems</span> &amp; Digital Experiences for <span class="glow-text">High-Growth Brands.</span>
       </h1>
 
       <p class="hero-desc">
-        Official portfolio of <strong>Shendy Rizky Putra</strong>. Proven expertise directing nationwide theatrical movie releases, modest fashion labels, cosmetics, premium packaging, and corporate identities reaching millions.
+        Portfolio of <strong>Shendy Rizky Putra</strong> — Art Director &amp; Visual Strategist. 5+ years crafting nationwide theatrical campaigns, luxury packaging suites, high-conversion e-commerce identities, and intuitive digital interfaces.
       </p>
 
-      <!-- Key Metrics Strip -->
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number" data-target="129000">129K+</span>
-          <span class="stat-label">Theatrical Campaign Reach</span>
+      <!-- Executive Core Capabilities Strip -->
+      <div class="specialty-strip" aria-label="Core Competencies">
+        <span class="specialty-pill"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Brand Identity Systems</span>
+        <span class="specialty-pill"><i class="fa-solid fa-film" aria-hidden="true"></i> Theatrical Key Visuals</span>
+        <span class="specialty-pill"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> UI/UX &amp; Product Design</span>
+        <span class="specialty-pill"><i class="fa-solid fa-boxes-packing" aria-hidden="true"></i> Luxury Packaging</span>
+        <span class="specialty-pill"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> E-Commerce Campaigns</span>
+      </div>
+
+      <!-- Executive Bento Metrics Grid -->
+      <div class="hero-stats hero-bento-grid">
+        <div class="stat-item bento-stat-card">
+          <div class="stat-header">
+            <span class="stat-number" data-target="129000">129K+</span>
+            <span class="stat-icon-badge"><i class="fa-solid fa-ticket" aria-hidden="true"></i></span>
+          </div>
+          <span class="stat-label">Theatrical Box Office Reach</span>
+          <span class="stat-micro">Cinema expansion &amp; national releases</span>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="260">260+</span>
+        <div class="stat-item bento-stat-card">
+          <div class="stat-header">
+            <span class="stat-number" data-target="260">260+</span>
+            <span class="stat-icon-badge"><i class="fa-solid fa-film" aria-hidden="true"></i></span>
+          </div>
           <span class="stat-label">Nationwide Cinema Screens</span>
+          <span class="stat-micro">XXI &amp; Cinépolis cinema circuits</span>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="50">50+</span>
-          <span class="stat-label">Fashion Lookbooks &amp; Catalogs</span>
+        <div class="stat-item bento-stat-card">
+          <div class="stat-header">
+            <span class="stat-number" data-target="340">340%</span>
+            <span class="stat-icon-badge"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i></span>
+          </div>
+          <span class="stat-label">Peak Campaign ROAS</span>
+          <span class="stat-micro">Shopee Mall &amp; TikTok Shop footwear drops</span>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="100">100%</span>
-          <span class="stat-label">Craftsmanship &amp; Originality</span>
+        <div class="stat-item bento-stat-card">
+          <div class="stat-header">
+            <span class="stat-number" data-target="5">5+ Yrs</span>
+            <span class="stat-icon-badge"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i></span>
+          </div>
+          <span class="stat-label">Full-Cycle Creative Direction</span>
+          <span class="stat-micro">From concept to national execution</span>
         </div>
       </div>
 
       <div class="hero-ctas">
         <a href="#showcase" class="btn-primary">
-          <span>Explore Design Works</span>
-          <i class="fa-solid fa-arrow-down-long"></i>
+          <span>Explore Selected Works</span>
+          <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
         </a>
         <button class="btn-secondary" id="interactiveTourBtn">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
           <span>Interactive Preview Tour</span>
         </button>
       </div>
@@ -437,7 +484,7 @@
   </section>
 
   <!-- Interactive Modal for Project Detail -->
-  <div class="project-modal" id="projectModal">
+  <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-label="Project Case Study Detail">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-container">
       <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">
@@ -451,7 +498,7 @@
   </div>
 
   <!-- Interactive PDF Full Book Viewer Modal -->
-  <div class="pdf-viewer-modal" id="pdfViewerModal">
+  <div class="pdf-viewer-modal" id="pdfViewerModal" role="dialog" aria-modal="true" aria-label="PDF Portfolio Document Viewer">
     <div class="pdf-modal-backdrop" id="pdfBackdrop"></div>
     <div class="pdf-modal-window">
       <div class="pdf-modal-header">
@@ -463,16 +510,16 @@
           </div>
         </div>
         <div class="pdf-header-center">
-          <button class="page-nav-btn" id="prevPdfPage"><i class="fa-solid fa-chevron-left"></i></button>
-          <span class="page-indicator" id="pdfPageIndicator">Page 1 / 23</span>
-          <button class="page-nav-btn" id="nextPdfPage"><i class="fa-solid fa-chevron-right"></i></button>
+          <button class="page-nav-btn" id="prevPdfPage" aria-label="Previous Page"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+          <span class="page-indicator" id="pdfPageIndicator" aria-live="polite">Page 1 / 23</span>
+          <button class="page-nav-btn" id="nextPdfPage" aria-label="Next Page"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
         </div>
         <div class="pdf-header-actions">
-          <a class="pdf-download-btn" href="assets/Portofolio_Graphic_Design.pdf" download="Shendy-Rizky-Putra-Portfolio.pdf" title="Download original PDF">
-            <i class="fa-solid fa-download"></i>
+          <a class="pdf-download-btn" href="assets/Portofolio_Graphic_Design.pdf" download="Shendy-Rizky-Putra-Portfolio.pdf" title="Download original PDF" aria-label="Download original PDF">
+            <i class="fa-solid fa-download" aria-hidden="true"></i>
             <span>Download Original</span>
           </a>
-          <button class="pdf-close-btn" id="pdfCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+          <button class="pdf-close-btn" id="pdfCloseBtn" aria-label="Close PDF Viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="pdf-modal-canvas-area">
@@ -507,7 +554,7 @@
         </div>
 
         <div class="contact-methods">
-          <a href="https://wa.me/6289677698090" target="_blank" class="contact-card whatsapp-card">
+          <a href="https://wa.me/6289677698090" target="_blank" rel="noopener noreferrer" class="contact-card whatsapp-card">
             <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
             <div class="contact-info">
               <span class="channel-label">WhatsApp Direct</span>
@@ -527,7 +574,7 @@
             <i class="fa-solid fa-arrow-up-right-from-square external-arrow"></i>
           </a>
 
-          <a href="https://instagram.com/shen_rzy" target="_blank" class="contact-card ig-card">
+          <a href="https://instagram.com/shen_rzy" target="_blank" rel="noopener noreferrer" class="contact-card ig-card">
             <div class="contact-icon"><i class="fa-brands fa-instagram"></i></div>
             <div class="contact-info">
               <span class="channel-label">Instagram</span>
@@ -543,22 +590,23 @@
           <h4><i class="fa-solid fa-paper-plane"></i> Send a Direct Inquiry</h4>
           <form id="inquiryForm" class="inquiry-form" onsubmit="event.preventDefault(); window.submitInquiry();">
             <div class="form-row">
-              <input type="text" id="inqName" placeholder="Your Name / Organization" required>
-              <input type="email" id="inqEmail" placeholder="Your Email Address" required>
+              <input type="text" id="inqName" placeholder="Your Name / Organization" aria-label="Your Name or Organization" required autocomplete="name">
+              <input type="email" id="inqEmail" placeholder="Your Email Address" aria-label="Your Email Address" required autocomplete="email">
             </div>
             <div class="form-row">
-              <select id="inqType">
+              <select id="inqType" aria-label="Select Project Category">
                 <option value="brand">Brand Identity &amp; Packaging</option>
                 <option value="fashion">Fashion &amp; E-Commerce Campaign</option>
                 <option value="film">Film &amp; Entertainment Key Visuals</option>
                 <option value="editorial">Editorial &amp; Company Profile</option>
+                <option value="uiux">UI/UX &amp; Web Design</option>
                 <option value="other">General Creative Collaboration</option>
               </select>
             </div>
-            <textarea id="inqMessage" rows="3" placeholder="Briefly describe your project requirements, scope, or timeline..." required></textarea>
+            <textarea id="inqMessage" rows="3" placeholder="Briefly describe your project requirements, scope, or timeline..." aria-label="Project details and scope" required></textarea>
             <button type="submit" class="btn-submit">
               <span>Send Project Inquiry</span>
-              <i class="fa-solid fa-chevron-right"></i>
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
             </button>
           </form>
           <div id="formSuccessMessage" class="form-success-note" style="display:none;">
@@ -582,6 +630,6 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=neo-v3"></script>
 </body>
 </html>
